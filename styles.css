@@ -644,16 +644,17 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #c47a00;
-  color: #fff !important;
+  background: #f4ede0;
+  color: #1E3D2F !important;
+  border: 1px solid #ccc7be !important;
   text-decoration: none;
   font-family: 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.3rem 0.85rem;
-  border-radius: 4px;
+  padding: 0 0.85rem;
+  border-radius: 13px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   height: 26px;
   box-sizing: border-box;
@@ -661,10 +662,11 @@ img {
 }
 
 .book-btn:hover {
-  background: #a56200 !important;
+  background: #1E3D2F !important;
   color: #fff !important;
+  border-color: #1E3D2F !important;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(196, 122, 0, 0.15);
+  box-shadow: 0 3px 6px rgba(30, 61, 47, 0.15);
 }
 
 /* ── Podcast / Sponsor cards ────────────────────────────────*/

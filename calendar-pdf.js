@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('.locations-group')) {
     injectLocationMapButtons();
   }
+  if (document.querySelector('.day-card')) {
+    injectAtGlanceMapButtons();
+  }
   const pdfBtns = document.querySelectorAll('.pdf-btn');
   pdfBtns.forEach(btn => {
     btn.addEventListener('click', function (e) {
@@ -113,7 +116,9 @@ function buildPrintView() {
           const cells = row.querySelectorAll('td');
           if (cells.length < 2) return;
           const time = cells[0].textContent.trim();
-          const desc = cells[1].textContent.replace(/\s+/g, ' ').trim();
+          const descClone = cells[1].cloneNode(true);
+          descClone.querySelectorAll('.schedule-desc-actions').forEach(el => el.remove());
+          const desc = descClone.textContent.replace(/\s+/g, ' ').trim();
 
           const tr = document.createElement('tr');
           tr.innerHTML = `<td class="print-time" style="width: 1.5in; font-weight: bold; vertical-align: top;">${time}</td><td class="print-desc" style="vertical-align: top;">${desc}</td>`;
@@ -519,6 +524,57 @@ function injectLocationMapButtons() {
       wrapper.appendChild(content);
       wrapper.appendChild(actionsContainer);
       li.appendChild(wrapper);
+    });
+  });
+}
+
+// Automatically parse At a Glance page schedule table rows and inject map buttons on the right
+function injectAtGlanceMapButtons() {
+  const cards = document.querySelectorAll('.day-card');
+  cards.forEach(card => {
+    const rows = card.querySelectorAll('table tr');
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('td');
+      if (cells.length < 2) return;
+
+      // Find maps link
+      const mapLink = cells[1].querySelector('a[href*="maps"]');
+      if (!mapLink) return;
+
+      const mapUrl = mapLink.getAttribute('href');
+
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'schedule-desc-wrapper';
+
+      const content = document.createElement('div');
+      content.className = 'schedule-desc-content';
+      while (cells[1].firstChild) {
+        content.appendChild(cells[1].firstChild);
+      }
+
+      // Actions container
+      const actionsContainer = document.createElement('div');
+      actionsContainer.className = 'schedule-desc-actions';
+
+      // Create map button
+      const mapBtn = document.createElement('a');
+      mapBtn.href = mapUrl;
+      mapBtn.target = '_blank';
+      mapBtn.rel = 'noopener';
+      mapBtn.className = 'map-btn';
+      mapBtn.title = 'View location on Google Maps';
+      mapBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      `;
+      actionsContainer.appendChild(mapBtn);
+
+      wrapper.appendChild(content);
+      wrapper.appendChild(actionsContainer);
+      cells[1].appendChild(wrapper);
     });
   });
 }
