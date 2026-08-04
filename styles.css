@@ -40,11 +40,30 @@ body {
 
 a {
   color: #1E3D2F;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover {
   color: #2e6347;
+}
+
+main.page-content p a,
+main.page-content td a,
+main.page-content li a,
+main.page-content blockquote a {
+  border-bottom: 1.5px solid rgba(30, 61, 47, 0.2);
+  transition: all 0.2s ease;
+  padding: 0 1px;
+}
+
+main.page-content p a:hover,
+main.page-content td a:hover,
+main.page-content li a:hover,
+main.page-content blockquote a:hover {
+  color: #c47a00;
+  border-bottom-color: #c47a00;
+  background-color: rgba(196, 122, 0, 0.05);
+  border-radius: 2px;
 }
 
 img {
@@ -270,6 +289,7 @@ img {
 }
 
 .day-card {
+  background: #fff;
   border: 1.5px solid #b8b4a8;
   border-radius: 10px;
   overflow: hidden;
@@ -347,8 +367,21 @@ img {
   margin-bottom: 1rem;
 }
 
+.schedule-table tr {
+  border-bottom: 1px dashed #e2decb;
+  transition: background-color 0.25s ease;
+}
+
+.schedule-table tr:last-child {
+  border-bottom: none;
+}
+
+.schedule-table tr:hover {
+  background-color: #fcfbfa;
+}
+
 .schedule-table td {
-  padding: 0.4rem 0.6rem;
+  padding: 0.65rem 0.8rem;
   vertical-align: top;
   font-size: 0.92rem;
 }
@@ -356,8 +389,54 @@ img {
 .schedule-table td:first-child {
   white-space: nowrap;
   font-weight: 700;
-  color: #333;
+  color: #1E3D2F;
   width: 150px;
+  letter-spacing: 0.02em;
+}
+
+.schedule-desc-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.schedule-desc-content {
+  flex-grow: 1;
+}
+
+.schedule-desc-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.add-to-calendar-btn,
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f4ede0;
+  color: #1E3D2F;
+  border: 1px solid #ccc7be;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  margin-top: -1px;
+}
+
+.add-to-calendar-btn:hover,
+.map-btn:hover {
+  background: #1E3D2F;
+  color: #fff;
+  border-color: #1E3D2F;
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 6px rgba(30, 61, 47, 0.15);
 }
 
 .hosts-line {
@@ -503,7 +582,15 @@ img {
 .locations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.locations-group {
+  background: #fff;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .locations-group h3 {
@@ -513,7 +600,7 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #1E3D2F;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   padding-bottom: 0.3rem;
   border-bottom: 1.5px solid #b8b4a8;
 }
@@ -521,13 +608,61 @@ img {
 .locations-group ul {
   list-style: none;
   font-size: 0.9rem;
-  line-height: 2;
+  padding: 0;
+  margin: 0;
+}
+
+.locations-group ul li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.locations-group ul li:last-child {
+  margin-bottom: 0;
 }
 
 .locations-group ul li::before {
   content: '•';
   color: #1E3D2F;
-  margin-right: 0.5rem;
+  margin-right: 0.6rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.location-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #c47a00;
+  color: #fff !important;
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 26px;
+  box-sizing: border-box;
+  border-bottom: none !important;
+}
+
+.book-btn:hover {
+  background: #a56200 !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(196, 122, 0, 0.15);
 }
 
 /* ── Podcast / Sponsor cards ────────────────────────────────*/
@@ -992,6 +1127,7 @@ img {
 
   header.hero,
   nav.site-nav,
+  .action-bar,
   .back-to-top,
   footer.site-footer {
     display: none !important;
@@ -1021,6 +1157,7 @@ img {
   /* Hide site chrome entirely */
   body.pdf-export-mode>header,
   body.pdf-export-mode>nav,
+  body.pdf-export-mode>.action-bar,
   body.pdf-export-mode>footer,
   body.pdf-export-mode>.back-to-top {
     display: none !important;
@@ -1102,20 +1239,23 @@ img {
 /* ── PDF Export Button ──────────────────────────────────────*/
 .pdf-btn {
   margin-top: 1.2rem;
-  background: #fff;
-  color: #1E3D2F;
-  border: none;
-  padding: 0.5rem 1.6rem;
-  font-weight: 500;
+  background: #1E3D2F;
+  color: #fff;
+  border: 1px solid #1E3D2F;
+  padding: 0.55rem 1.8rem;
+  font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(30, 61, 47, 0.1);
 }
 
 .pdf-btn:hover {
-  background: #e8e4d8;
-  transform: scale(1.03);
+  background: #c47a00;
+  border-color: #c47a00;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 8px rgba(196, 122, 0, 0.2);
 }
