@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 132" width="720" height="132">
+<defs>
+<linearGradient id="fg" x1="0" y1="1" x2="1" y2="0">
+<stop offset="0" stop-color="#2E9E44"></stop>
+<stop offset="1" stop-color="#8CC63F"></stop>
+</linearGradient>
+</defs>
+<g>
+<path d="M62 18 A 48 48 0 1 0 110 66 A 45 45 0 1 1 62 25 Z" fill="url(#fg)"></path>
+<path d="M58 106 C 56 76 60 48 76 20" fill="none" stroke="url(#fg)" stroke-width="6" stroke-linecap="round"></path>
+<path d="M66 52 C 38 50 26 30 28 12 C 50 14 64 32 66 52 Z" fill="url(#fg)"></path>
+<path d="M72 38 C 78 16 94 6 112 8 C 110 30 92 42 72 38 Z" fill="url(#fg)"></path>
+</g>
+<text x="138" y="64" font-family="Georgia, &#39;Times New Roman&#39;, serif" font-size="34" letter-spacing="2" fill="#2B3990">FLICKNER INNOVATION FARM</text>
+<text x="142" y="102" font-family="&#39;Segoe UI&#39;, &#39;Trebuchet MS&#39;, Arial, sans-serif" font-size="26" fill="#2E9E44">growing for the future</text>
+<line x1="138" y1="116" x2="706" y2="116" stroke="#2B3990" stroke-width="2"></line>
+</svg>

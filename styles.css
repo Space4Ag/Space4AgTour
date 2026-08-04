@@ -1,0 +1,1086 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+/* ── Reset & base ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+td,
+th,
+input,
+button,
+textarea,
+a,
+span {
+  font-family: 'Oswald', sans-serif !important;
+}
+
+body {
+  background: #e8e4d8;
+  color: #2c2c2c;
+  line-height: 1.7;
+}
+
+a {
+  color: #1E3D2F;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #2e6347;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Top banner / hero ──────────────────────────────────────*/
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1rem;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  animation: kenburns 25s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(30, 61, 47, 0.75), rgba(30, 61, 47, 0.93));
+  z-index: 2;
+}
+
+/* partner logos strip */
+.hero-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.hero-logos .logo-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  max-width: 180px;
+  height: 58px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.22s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-logos .logo-box:hover {
+  transform: scale(1.04) translateY(-2.5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.hero-logos .logo-box img {
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+  max-width: 800px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+/* ── Sticky Navigation ──────────────────────────────────────*/
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #ccc8be;
+  padding: 0 1rem;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.site-nav ul li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2c2c2c;
+  transition: color 0.2s;
+}
+
+.site-nav ul li a:hover,
+.site-nav ul li a.active {
+  color: #1E3D2F;
+}
+
+/* ── Page content wrapper ───────────────────────────────────*/
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ── Section headers ────────────────────────────────────────*/
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  margin-bottom: 0.35rem;
+}
+
+.section-header .sub {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777;
+}
+
+/* ── Glance schedule cards ──────────────────────────────────*/
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.2rem;
+}
+
+.day-card {
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.day-card .day-header {
+  background: #1E3D2F;
+  color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.2rem;
+}
+
+.day-card table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0.5rem;
+}
+
+.day-card table td {
+  padding: 0.45rem 1rem;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+
+.day-card table td:first-child {
+  white-space: nowrap;
+  font-weight: 700;
+  color: #444;
+  width: 130px;
+}
+
+/* ── Day-by-day itinerary blocks ────────────────────────────*/
+.day-block {
+  background: #fff;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.day-block .day-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.day-block h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.day-block .day-intro {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* schedule table inside day block */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.schedule-table td {
+  padding: 0.4rem 0.6rem;
+  vertical-align: top;
+  font-size: 0.92rem;
+}
+
+.schedule-table td:first-child {
+  white-space: nowrap;
+  font-weight: 700;
+  color: #333;
+  width: 150px;
+}
+
+.hosts-line {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  margin: 0.8rem 0;
+}
+
+/* blockquote */
+.day-quote {
+  border-left: 4px solid #b8b4a8;
+  background: #f3f0e8;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.4rem;
+  margin: 1.2rem 0;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.day-quote .attr {
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: 700;
+  color: #1E3D2F;
+}
+
+/* logo row inside day blocks */
+.logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+  justify-content: center;
+}
+
+.logo-row .logo-pill {
+  background: #fff;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  max-width: 170px;
+  height: 60px;
+}
+
+.logo-row .logo-pill img {
+  max-height: 42px;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+/* photo grid inside day blocks — Masonry Column Layout */
+.photo-grid {
+  column-count: 3;
+  column-gap: 0.8rem;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.photo-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.8rem;
+  border-radius: 12px;
+  break-inside: avoid;
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.22s;
+  cursor: zoom-in;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.03) translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 768px) {
+  .photo-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-grid {
+    column-count: 1;
+  }
+}
+
+/* info box */
+.info-box {
+  background: #1E3D2F;
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.4rem 1.8rem;
+  margin: 1.2rem 0;
+}
+
+.info-box h4 {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.info-box ul {
+  margin-left: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* stat block */
+.stat-block {
+  background: #f3f0e8;
+  border-radius: 10px;
+  padding: 1.2rem 1.8rem;
+  display: inline-block;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.stat-block .stat-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1E3D2F;
+  line-height: 1.1;
+}
+
+.stat-block .stat-label {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+/* ── Locations page ─────────────────────────────────────────*/
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.locations-group h3 {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1.5px solid #b8b4a8;
+}
+
+.locations-group ul {
+  list-style: none;
+  font-size: 0.9rem;
+  line-height: 2;
+}
+
+.locations-group ul li::before {
+  content: '•';
+  color: #1E3D2F;
+  margin-right: 0.5rem;
+}
+
+/* ── Podcast / Sponsor cards ────────────────────────────────*/
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.card-item {
+  background: #fff;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+  width: 100%;
+  transition: box-shadow 0.2s;
+}
+
+.card-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+.card-item img {
+  height: 70px;
+  object-fit: contain;
+}
+
+.card-item span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1E3D2F;
+  line-height: 1.3;
+}
+
+/* sponsor grid (slightly larger) */
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.sponsor-item {
+  background: #fff;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  transition: box-shadow 0.2s;
+}
+
+.sponsor-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+.sponsor-item img {
+  max-height: 60px;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+/* ── Bio cards (NASA Team / Hosts) ──────────────────────────*/
+.bio-card {
+  background: #fff;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  padding: 1.6rem 2rem;
+  margin-bottom: 1.4rem;
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+}
+
+.bio-card .bio-avatar {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #d8d4c8;
+}
+
+.bio-card .bio-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bio-card .bio-text h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.2rem;
+}
+
+.bio-card .bio-text .bio-role {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  margin-bottom: 0.7rem;
+}
+
+.bio-card .bio-text p {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.6rem;
+}
+
+.bio-card .bio-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* host region divider */
+.region-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  text-align: center;
+  margin: 2rem 0 1rem;
+  padding: 0.4rem;
+  border-top: 1.5px solid #b8b4a8;
+  border-bottom: 1.5px solid #b8b4a8;
+}
+
+/* ── Footer ─────────────────────────────────────────────────*/
+.site-footer {
+  background: #1E3D2F;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  padding: 1.2rem 1rem;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+/* ── Back-to-top ────────────────────────────────────────────*/
+.back-to-top {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  background: #1E3D2F;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.back-to-top:hover {
+  background: #2e6347;
+}
+
+/* ── Responsive ─────────────────────────────────────────────*/
+@media (max-width: 600px) {
+  .bio-card {
+    flex-direction: column;
+  }
+
+  .day-card table td:first-child {
+    width: 90px;
+  }
+
+  .schedule-table td:first-child {
+    width: 100px;
+  }
+
+  .glance-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Image Carousels ────────────────────────────────────────*/
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 640px;
+  height: 380px;
+  margin: 1.2rem auto 0;
+  border: 1.5px solid #b8b4a8;
+  border-radius: 10px;
+  background: #f3f0e8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30, 61, 47, 0.75);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  outline: none;
+}
+
+.carousel-control:hover {
+  background: rgba(30, 61, 47, 0.95);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-control.prev {
+  left: 12px;
+}
+
+.carousel-control.next {
+  right: 12px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.carousel-dot:hover,
+.carousel-dot.active {
+  background: #fff;
+  transform: scale(1.15);
+}
+
+@media (max-width: 640px) {
+  .carousel-container {
+    height: 260px;
+  }
+}
+
+/* ── Lightbox Gallery Modal ─────────────────────────────────*/
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(15, 30, 23, 0.96);
+  /* Darker version of primary theme color */
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.lightbox-img-wrap {
+  position: relative;
+  max-width: 85%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  animation: zoom 0.25s ease-out;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 40px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 2100;
+}
+
+.lightbox-close:hover {
+  color: #fff;
+}
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 3rem;
+  padding: 20px;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.15s;
+  z-index: 2100;
+  outline: none;
+}
+
+.lightbox-btn:hover {
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-btn.prev {
+  left: 20px;
+}
+
+.lightbox-btn.next {
+  right: 20px;
+}
+
+.lightbox-caption {
+  margin-top: 15px;
+  color: #e8e4d8;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  text-align: center;
+  max-width: 600px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .lightbox-btn {
+    font-size: 2.2rem;
+    padding: 10px;
+  }
+
+  .lightbox-btn.prev {
+    left: 5px;
+  }
+
+  .lightbox-btn.next {
+    right: 5px;
+  }
+
+  .lightbox-close {
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
+  }
+}
+
+/* ── Mobile Optimization & Print Queries ────────────────────*/
+@media (max-width: 600px) {
+  .site-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+  }
+
+  .site-nav ul {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .site-nav ul li {
+    flex-shrink: 0;
+  }
+
+  .day-card table td,
+  .schedule-table td {
+    display: block;
+    width: 100% !important;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .day-card table td:first-child,
+  .schedule-table td:first-child {
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: #1E3D2F;
+  }
+}
+
+#print-view {
+  display: none;
+}
+
+@media print {
+
+  header.hero,
+  nav.site-nav,
+  .back-to-top,
+  footer.site-footer {
+    display: none !important;
+  }
+
+  /* Inside main, hide everything except the generated print view */
+  body.pdf-export-mode main.page-content>*:not(#print-view) {
+    display: none !important;
+  }
+
+  body.pdf-export-mode main.page-content {
+    display: block !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  body.pdf-export-mode #print-view {
+    display: block !important;
+    font-family: Georgia, serif;
+    color: #222;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    margin-top: 0 !important;
+    padding-top: 0.2in !important;
+  }
+
+  /* Hide site chrome entirely */
+  body.pdf-export-mode>header,
+  body.pdf-export-mode>nav,
+  body.pdf-export-mode>footer,
+  body.pdf-export-mode>.back-to-top {
+    display: none !important;
+  }
+
+  /* Inside main, hide everything except the generated print view */
+  body.pdf-export-mode main.page-content>*:not(#print-view) {
+    display: none !important;
+  }
+
+  body.pdf-export-mode main.page-content {
+    display: block !important;
+  }
+
+  body.pdf-export-mode #print-view {
+    display: block !important;
+    font-family: Georgia, serif;
+    color: #222;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .print-day {
+    /* no more page-break-before:always forcing a fresh page per day —
+       optional: keep it if you like one-day-per-page, see note below */
+    page-break-inside: auto;
+    /* allow it to split if it must */
+    border: none;
+    /* remove the boxed-card look */
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0.35in;
+  }
+
+  .print-day h2 {
+    font-size: 14pt;
+    border-bottom: 1.5px solid #1E3D2F;
+    padding-bottom: 0.08in;
+    margin-bottom: 0.15in;
+    page-break-after: avoid;
+    /* heading never gets orphaned at bottom of a page */
+  }
+
+  .print-table tr {
+    page-break-inside: avoid;
+    /* a single time/description row never splits mid-row */
+  }
+
+  .print-infobox {
+    page-break-inside: avoid;
+    /* fact boxes still avoid splitting, they're short enough */
+    border: 0.5px solid #ccc;
+    border-radius: 4px;
+    padding: 0.12in 0.16in;
+    margin-top: 0.15in;
+    background: none !important;
+    color: #222 !important;
+  }
+
+  body.days-page img {
+    display: none !important;
+  }
+
+  body.days-page .three-m-box {
+    display: none !important;
+  }
+
+  body.days-page .ok-facts-box {
+    display: none !important;
+  }
+
+  body.days-page .cedar-box {
+    display: none !important;
+  }
+
+  /* ...rest of the #print-view rules from before (h1, .print-day, .print-table, etc.) stay unchanged... */
+}
+
+/* ── PDF Export Button ──────────────────────────────────────*/
+.pdf-btn {
+  margin-top: 1.2rem;
+  background: #fff;
+  color: #1E3D2F;
+  border: none;
+  padding: 0.5rem 1.6rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.pdf-btn:hover {
+  background: #e8e4d8;
+  transform: scale(1.03);
+}
