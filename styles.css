@@ -206,13 +206,15 @@ img {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #2c2c2c;
-  transition: color 0.2s;
+  color: #555;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 3px solid transparent;
 }
 
 .site-nav ul li a:hover,
 .site-nav ul li a.active {
   color: #1E3D2F;
+  border-bottom: 3px solid #1E3D2F;
 }
 
 /* ── Action bar (RSVP / Lunch ticket) ──────────────────────*/
