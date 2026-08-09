@@ -472,7 +472,7 @@ img {
 
 /* logo row inside day blocks */
 .logo-row {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 0.8rem;
   margin: 1rem 0;
