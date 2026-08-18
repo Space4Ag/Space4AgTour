@@ -1472,3 +1472,188 @@ img {
   transform: translateY(-1.5px);
   box-shadow: 0 4px 8px rgba(196, 122, 0, 0.2);
 }
+
+/* ── Field Dress Code & Weather Advisory Banner ────────────*/
+.advisory-banner {
+  background: linear-gradient(135deg, #1E3D2F 0%, #295240 100%);
+  color: #fff;
+  border-left: 6px solid #c47a00;
+  border-radius: 8px;
+  padding: 1.25rem 1.6rem;
+  margin: 1.5rem 0 2rem 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.advisory-banner .advisory-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.advisory-banner .advisory-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f7c948;
+}
+
+.advisory-banner p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #f0ede6;
+  margin-bottom: 0.4rem;
+}
+
+.advisory-banner p:last-child {
+  margin-bottom: 0;
+}
+
+.advisory-banner strong {
+  color: #fff;
+}
+
+.advisory-badge-inline {
+  display: inline-block;
+  background: rgba(196, 122, 0, 0.18);
+  border: 1px solid #c47a00;
+  color: #925400;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0.4rem 0;
+}
+
+/* ── Bus Callout Box ────────────────────────────────────────*/
+.bus-callout {
+  background: #fdf8eb;
+  border-left: 4px solid #c47a00;
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #5c3b00;
+  line-height: 1.4;
+}
+
+/* ── Speaker Schedule Table (Monday Lunch) ──────────────────*/
+.speaker-schedule-box {
+  background: #faf8f3;
+  border: 1.5px solid #d9d4c7;
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  margin: 1.2rem 0;
+}
+
+.speaker-schedule-box h4 {
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1E3D2F;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid #1E3D2F;
+  padding-bottom: 0.35rem;
+}
+
+.speaker-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.speaker-table tr {
+  border-bottom: 1px solid #e8e3d6;
+}
+
+.speaker-table tr:last-child {
+  border-bottom: none;
+}
+
+.speaker-table td {
+  padding: 0.45rem 0.5rem;
+  vertical-align: top;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.speaker-table td.speaker-time {
+  width: 90px;
+  font-weight: 700;
+  color: #1E3D2F;
+  white-space: nowrap;
+}
+
+.speaker-table td.speaker-desc strong {
+  color: #1E3D2F;
+}
+
+/* ── Hotel Cards & Expired Status ───────────────────────────*/
+.hotel-item {
+  background: #faf8f3;
+  border: 1px solid #ddd7c9;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.9rem;
+  transition: box-shadow 0.2s;
+}
+
+.hotel-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.hotel-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.hotel-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1E3D2F;
+}
+
+.hotel-status-tag {
+  display: inline-block;
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #fdf0ed;
+  color: #a82a1e;
+  border: 1px solid #e5aba5;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.hotel-meta {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.hotel-booking-note {
+  font-size: 0.84rem;
+  color: #333;
+  background: #f4efe4;
+  border-radius: 4px;
+  padding: 0.45rem 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.hotel-booking-note strong {
+  color: #1E3D2F;
+}
+
+.phone-link {
+  font-weight: 700;
+  color: #1E3D2F;
+}

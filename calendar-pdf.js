@@ -62,16 +62,51 @@ function buildPrintView() {
       if (table) {
         const cleanTable = document.createElement('table');
         cleanTable.className = 'print-table';
-        table.querySelectorAll('tr').forEach((row) => {
+
+        // Filter only top-level direct rows of the schedule table, ignoring nested speaker-table rows
+        const directRows = Array.from(table.querySelectorAll('tr')).filter(tr => !tr.closest('.speaker-schedule-box'));
+
+        directRows.forEach((row) => {
           const cells = row.querySelectorAll('td');
           if (cells.length < 2) return;
           const time = cells[0].textContent.trim();
           const descClone = cells[1].cloneNode(true);
-          descClone.querySelectorAll('.schedule-desc-actions').forEach(el => el.remove());
-          const desc = descClone.textContent.replace(/\s+/g, ' ').trim();
+          
+          // Remove action buttons (calendar/map)
+          descClone.querySelectorAll('.schedule-desc-actions, .map-btn, .add-to-calendar-btn').forEach(el => el.remove());
+
+          // Handle speaker schedule box inside cell if present
+          const speakerBox = descClone.querySelector('.speaker-schedule-box');
+          let speakerHTML = '';
+          if (speakerBox) {
+            const speakerRows = speakerBox.querySelectorAll('.speaker-table tr');
+            if (speakerRows.length > 0) {
+              speakerHTML = `
+                <div class="print-speaker-box" style="margin-top: 0.1in; border-left: 2.5px solid #1E3D2F; padding: 0.06in 0.12in; background: #faf9f6; border-radius: 4px;">
+                  <div style="font-weight: bold; font-size: 9.5pt; color: #1E3D2F; margin-bottom: 0.04in; text-transform: uppercase; letter-spacing: 0.06em;">Lunch Presentations &amp; Speaker Schedule</div>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 9.5pt; line-height: 1.4;">
+              `;
+              speakerRows.forEach(sRow => {
+                const sCells = sRow.querySelectorAll('td');
+                if (sCells.length >= 2) {
+                  const sTime = sCells[0].textContent.trim();
+                  const sDesc = sCells[1].innerHTML.trim();
+                  speakerHTML += `<tr><td style="width: 1.05in; font-weight: bold; color: #1E3D2F; vertical-align: top; padding: 2px 0;">${sTime}</td><td style="vertical-align: top; padding: 2px 0;">${sDesc}</td></tr>`;
+                }
+              });
+              speakerHTML += `</table></div>`;
+            }
+            speakerBox.remove();
+          }
+
+          // Clean main description
+          let descText = descClone.innerHTML.trim();
+          descText = descText.replace(/&middot;\s*<a[^>]*>map<\/a>/gi, '');
+          descText = descText.replace(/·\s*<a[^>]*>map<\/a>/gi, '');
+          descText = descText.replace(/\s*·\s*$/, '').trim();
 
           const tr = document.createElement('tr');
-          tr.innerHTML = `<td class="print-time" style="width: 1.5in; font-weight: bold; vertical-align: top;">${time}</td><td class="print-desc" style="vertical-align: top;">${desc}</td>`;
+          tr.innerHTML = `<td class="print-time" style="width: 1.5in; font-weight: bold; vertical-align: top;">${time}</td><td class="print-desc" style="vertical-align: top;">${descText}${speakerHTML}</td>`;
           cleanTable.appendChild(tr);
         });
         section.appendChild(cleanTable);
@@ -150,6 +185,26 @@ function buildPrintView() {
       h3.style.pageBreakAfter = 'avoid';
       section.appendChild(h3);
 
+      // Handle hotel items if present
+      const hotelItems = group.querySelectorAll('.hotel-item');
+      if (hotelItems.length > 0) {
+        hotelItems.forEach(item => {
+          const hName = item.querySelector('.hotel-name')?.textContent.trim() || '';
+          const hMeta = item.querySelector('.hotel-meta')?.textContent.replace(/Map/gi, '').replace(/[·•]/g, '').trim() || '';
+          const hNote = item.querySelector('.hotel-booking-note')?.textContent.trim() || '';
+
+          const itemDiv = document.createElement('div');
+          itemDiv.style.marginBottom = '0.12in';
+          itemDiv.style.lineHeight = '1.4';
+          itemDiv.innerHTML = `
+            <div style="font-weight: bold; color: #1E3D2F;">${hName}</div>
+            <div style="font-size: 9.5pt; color: #555;">${hMeta}</div>
+            <div style="font-size: 9pt; color: #333; margin-top: 0.02in;">${hNote}</div>
+          `;
+          section.appendChild(itemDiv);
+        });
+      }
+
       const ul = document.createElement('ul');
       ul.style.listStyle = 'none';
       ul.style.padding = '0';
@@ -180,7 +235,9 @@ function buildPrintView() {
         ul.appendChild(cleanLi);
       });
 
-      section.appendChild(ul);
+      if (group.querySelectorAll('li').length > 0) {
+        section.appendChild(ul);
+      }
       container.appendChild(section);
     });
   } 
@@ -295,8 +352,8 @@ function injectCalendarButtons() {
     const month = labelText.toLowerCase().includes('august') ? 8 : 8; // August 2026
     const dateStr = `2026-08-${String(dayNum).padStart(2, '0')}`;
 
-    // Scan each row in the schedule table
-    const rows = block.querySelectorAll('.schedule-table tr');
+    // Scan each top-level row in the schedule table (ignore nested speaker-table rows)
+    const rows = Array.from(block.querySelectorAll('.schedule-table tr')).filter(tr => !tr.closest('.speaker-schedule-box'));
     rows.forEach((row) => {
       const cells = row.querySelectorAll('td');
       if (cells.length < 2) return;
