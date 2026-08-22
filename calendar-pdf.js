@@ -292,6 +292,60 @@ function buildPrintView() {
         container.appendChild(bioSection);
       }
     });
+  } else if (root.querySelector('.resource-card')) {
+    // === ADDITIONAL RESOURCES PAGE ===
+    const children = root.children;
+    Array.from(children).forEach((child) => {
+      if (child.classList.contains('region-label')) {
+        const regionHeader = document.createElement('h2');
+        regionHeader.textContent = child.textContent.trim();
+        regionHeader.style.fontSize = '16pt';
+        regionHeader.style.marginTop = '0.3in';
+        regionHeader.style.borderBottom = '2.5px solid #c47a00';
+        regionHeader.style.paddingBottom = '0.05in';
+        regionHeader.style.color = '#c47a00';
+        regionHeader.style.pageBreakAfter = 'avoid';
+        container.appendChild(regionHeader);
+      } else if (child.classList.contains('resource-grid')) {
+        child.querySelectorAll('.resource-card').forEach((card) => {
+          const title = card.querySelector('.resource-card-title')?.textContent.trim() || '';
+          const meta = card.querySelector('.resource-card-meta')?.textContent.trim() || '';
+          const desc = card.querySelector('.resource-card-desc')?.textContent.trim() || '';
+
+          const resSection = document.createElement('section');
+          resSection.style.pageBreakInside = 'avoid';
+          resSection.style.marginBottom = '0.2in';
+
+          const titleEl = document.createElement('h3');
+          titleEl.textContent = title;
+          titleEl.style.fontSize = '13pt';
+          titleEl.style.margin = '0.1in 0 0.02in 0';
+          titleEl.style.color = '#1E3D2F';
+          titleEl.style.pageBreakAfter = 'avoid';
+          resSection.appendChild(titleEl);
+
+          if (meta) {
+            const metaEl = document.createElement('p');
+            metaEl.textContent = meta;
+            metaEl.style.fontWeight = 'bold';
+            metaEl.style.fontSize = '9.5pt';
+            metaEl.style.margin = '0 0 0.04in 0';
+            metaEl.style.color = '#555';
+            resSection.appendChild(metaEl);
+          }
+
+          if (desc) {
+            const descEl = document.createElement('p');
+            descEl.textContent = desc;
+            descEl.style.margin = '0';
+            descEl.style.lineHeight = '1.45';
+            resSection.appendChild(descEl);
+          }
+
+          container.appendChild(resSection);
+        });
+      }
+    });
   }
 }
 
